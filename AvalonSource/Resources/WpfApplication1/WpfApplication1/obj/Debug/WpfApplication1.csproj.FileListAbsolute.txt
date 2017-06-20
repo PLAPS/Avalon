@@ -1,0 +1,18 @@
+c:\users\a-cmlambert\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe.config
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe.config
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.pdb
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\MainWindow.g.cs
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\App.g.cs
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1_MarkupCompile.cache
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1_MarkupCompile.lref
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\MainWindow.baml
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.g.resources
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.exe
+\\cvty.com\dfs\Apps\Install\AppV Development\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.pdb
+S:\Development\Lambert\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe.config
+S:\Development\Lambert\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.exe
+S:\Development\Lambert\Avalon\AvalonSource\Resources\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.pdb
