@@ -1,29 +1,27 @@
-##Modify the section below to match your environment##
-
-#region Defined variables
-	$AppSourceName = 'AppVManage' #Must match foldername this file is in (Need to pull this from $PSScriptRoot)
-    $Sequencer = 'AZPH-W7-SEQ6' #Computer name of Sequencer VM
-    $ODUser = "$Sequencer\ODSnap" #Local user admin account on Sequencer (non-domain account)
-    $ODPFile = "$PSScriptRoot\..\..\AvalonSource\China.txt" #Encrypted password for $ODUser account
+#vSphere and Sequencer VM Configuration
+	$Sequencer = 'AZPH-W7-SEQ6' #Computer name of Sequencer VM
+    $ODUser = "$Sequencer\ODSnap" #Local user admin account on Sequencer (Off Domain User)
+    $ODPFile = "$PSScriptRoot\..\..\AvalonSource\Pd.txt" #Encrypted password for $ODUser account
     $ODKFile = "$PSScriptRoot\..\..\AvalonSource\Avalon.key" #Encryption key for password
     $ODKey = Get-Content $ODKFile
     $ODCred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ODUser, (Get-Content $ODPFile | ConvertTo-SecureString -Key $ODKey)
-    $SDModuleSource = "$PSScriptRoot\..\..\Modules\AvalonMods.ps1" #Location of Avalon Custom Functions Script
-	$VerbosePreference = "continue"
-	
-	Write-Verbose "Please Enter Credentials for VSphere (domain\username)"
+	Write-Verbose "Please Enter Credentials for VSphere (Domain\User)"
     $Global:DomCred = Get-Credential -Message 'VSphere Credentials'
-    $Source = "$PSScriptRoot\..\..\PrePackaging\$AppSourceName"
-    $VIServerName = 'VIServer.Domain.com' #VSphere Management Server name
-    $Repo = "$PSScriptRoot\..\..\CompletedPackages" #Location to copy completed packages to after sequencing
-	$SnapShotName = 'ODSnap4' #Sequencer VM SnapShot name to revert to before and after sequencing
-#endregion
+    $VIServerName = 'azph-srv-mgt065.cvty.com' #vSphere VI Server Name
+    $SnapShotName = 'ODSnap4' #Sequencer VM SnapShot Name
 
-##DO NOT MODIFY BELOW THIS LINE##
+##DO NOT MODIFY BELOW THIS LINE##	
+
+#Avalon Configuration
+	$VerbosePreference = "continue"
+    $AppSourceName = Split-Path -Path $PSScriptRoot -Leaf
+	$Source = "$PSScriptRoot\..\..\PrePackaging\$AppSourceName"
+	$Repo = "$PSScriptRoot\..\..\CompletedPackages"
+	$SDModuleSource = "$PSScriptRoot\..\..\Modules\SDModules.ps1" #Location of Avalon Custom Functions Script
 
 #region PowerCLI
 	Write-Verbose "Starting VM"
-	Add-PSSnapin -Name VMware.VimAutomation.Core # check if it's already added before adding it
+	Add-PSSnapin -Name VMware.VimAutomation.Core
     $ErrorActionPreference = 'SilentlyContinue'
     Connect-VIServer -Server $VIServerName -Protocol https -Credential $DomCred
     Get-Snapshot -VM $Sequencer -Name $SnapShotName | Set-VM -VM $Sequencer -Confirm:$false
@@ -41,7 +39,7 @@
     $LocalRoot = "\\$SeqIP\C$"
 	$LocalDest  = "$LocalRoot\Avalon"
     If (Test-Path $LocalRoot ) {
-        Net Use /delete $LocalRoot  # change this to start-command
+        Net Use /delete $LocalRoot
 	}
 	If (Test-Path M:) {
 		Remove-PSDrive M -Force
