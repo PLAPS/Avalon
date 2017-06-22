@@ -1,0 +1,12 @@
+Infrastructure specific requirements:
+Sequencer VM in vSphere
+Access to vSphere to start, stop, and revert snapshots
+VMWare VIX & VMWare vSphere PowerCLI installed on machine running Avalon
+
+Sequencer VM Requirements:
+Windows 7 (or pre-creators Windows 10)
+VMWare VIX installed
+Microsoft App-V Sequencer installed (5.1.x or newer)
+Scheduled tasks configured (included in PreReqs folder)
+Pre-create C:\Avalon\Process folder on VM (not required, but preferred)
+Copy LNC.reg to C:\Temp on Sequencer VM
