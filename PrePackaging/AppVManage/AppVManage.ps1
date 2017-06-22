@@ -1,5 +1,5 @@
 #vSphere and Sequencer VM Configuration
-	$Sequencer = 'AZPH-W7-SEQ6' #Computer name of Sequencer VM
+	$Sequencer = 'MachineName' #Computer name of Sequencer VM
     $ODUser = "$Sequencer\ODSnap" #Local user admin account on Sequencer (Off Domain User)
     $ODPFile = "$PSScriptRoot\..\..\AvalonSource\Pd.txt" #Encrypted password for $ODUser account
     $ODKFile = "$PSScriptRoot\..\..\AvalonSource\Avalon.key" #Encryption key for password
@@ -7,7 +7,7 @@
     $ODCred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ODUser, (Get-Content $ODPFile | ConvertTo-SecureString -Key $ODKey)
 	Write-Verbose "Please Enter Credentials for VSphere (Domain\User)"
     $Global:DomCred = Get-Credential -Message 'VSphere Credentials'
-    $VIServerName = 'azph-srv-mgt065.cvty.com' #vSphere VI Server Name
+    $VIServerName = 'vSphereServerName' #vSphere VI Server Name
     $SnapShotName = 'ODSnap4' #Sequencer VM SnapShot Name
 
 ##DO NOT MODIFY BELOW THIS LINE##	
