@@ -10,3 +10,7 @@ Microsoft App-V Sequencer installed (5.1.x or newer)
 Scheduled tasks configured (included in PreReqs folder)
 Pre-create C:\Avalon\Process folder on VM (not required, but preferred)
 Copy LNC.reg to C:\Temp on Sequencer VM
+
+Scheduled Task Configuration:
+Modify the following line in the Sequence Scheduled task (Sequence.xml) before import
+      <UserId>MachineName\LocalAccount</UserId>
