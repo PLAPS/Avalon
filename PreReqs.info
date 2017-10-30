@@ -2,8 +2,6 @@ Infrastructure specific requirements:
 Sequencer VM in vSphere
 Access to vSphere to start, stop, and revert snapshots
 VMWare VIX & VMWare vSphere PowerCLI installed on machine running Avalon
-Create encrypted password and keyfile for local account on Sequencer VM using the following info:
-https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.security/convertto-securestring
 
 Sequencer VM Requirements:
 Windows 7 (or pre-creators Windows 10)
