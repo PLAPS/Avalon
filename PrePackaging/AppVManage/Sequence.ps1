@@ -4,7 +4,8 @@ $InstallFile = 'Setup_AppVManage.msi'
 $LocalDest = 'C:\Avalon'
 $ProcessFolder = "$LocalDest\Process"
 
-regedit.exe /s "$ProcessFolder\PS1Set.reg"
+New-PSDrive HKCR Registry HKEY_CLASSES_ROOT
+Set-ItemProperty HKCR:\Microsoft.PowerShellScript.1\Shell '(Default)' 0
 Import-Module "$ProcessFolder\SDModules.psm1"
 $Exe = "$ProcessFolder\$InstallFile"
 Unblock-File $Exe
