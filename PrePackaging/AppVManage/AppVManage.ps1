@@ -13,7 +13,6 @@
 	$Source = "$PSScriptRoot\..\..\PrePackaging\$AppSourceName"
 	$Repo = "$PSScriptRoot\..\..\CompletedPackages"
 	$SDModuleSource = "$PSScriptRoot\..\..\Modules\SDModules.psm1" #Location of Avalon Custom Functions Script
-	$PS1Set = "$PSScriptRoot\..\..\PreReqs\PS1Set.reg" #Location of Avalon PowerShell file extension fix
 
 #region PowerCLI
 	Write-Verbose "Starting VM"
@@ -44,7 +43,6 @@
 	New-PSDrive -Name M -PSProvider FileSystem -Root $LocalRoot -Credential $DomCred -Persist
     $ProcessFolder = "$LocalDest\Process"
 	New-Item -ItemType directory -Path $ProcessFolder -Force
-	Copy-Item $PS1Set "$ProcessFolder\PS1Set.reg" -Force
 	Copy-Item $SDModuleSource "$ProcessFolder\SDModules.psm1" -Force
 	Copy-Item $Source\* $ProcessFolder -Recurse -Force -Exclude Sequence.ps1
 	Copy-Item $Source\Sequence.ps1 $ProcessFolder\Sequence.ps1
