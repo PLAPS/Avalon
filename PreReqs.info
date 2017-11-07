@@ -12,5 +12,7 @@ Pre-create C:\Avalon\Process folder on VM (not required, but preferred)
 Copy LNC.reg to C:\Temp on Sequencer VM
 
 Scheduled Task Configuration:
+Setup a Local or Service Account with Local Administrator permissions on the sequencer machine
 Modify the following line in the Sequence Scheduled task (Sequence.xml) before import
       <UserId>MachineName\LocalAccount</UserId>
+      
