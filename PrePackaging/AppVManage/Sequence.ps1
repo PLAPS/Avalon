@@ -4,6 +4,7 @@ $InstallFile = 'Setup_AppVManage.msi'
 $LocalDest = 'C:\Avalon'
 $ProcessFolder = "$LocalDest\Process"
 
+regedit.exe /s "$ProcessFolder\PS1Set.reg"
 Import-Module "$ProcessFolder\SDModules.psm1"
 $Exe = "$ProcessFolder\$InstallFile"
 Unblock-File $Exe
