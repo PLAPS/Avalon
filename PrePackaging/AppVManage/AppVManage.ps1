@@ -58,9 +58,15 @@
 	
 #Copy Package to Repository
 	Write-Verbose "Attempting to Copy AppV Package to Repository"
-	Copy-Item $LocalDest\* $Repo -Recurse -Exclude Process
-    	Remove-PSDrive M -Force
-	Write-Verbose "Completed Attempt to Copy AppV Package to Repository"
+	$PackageFolder = (Get-ChildItem -Recurse $LocalDest -Exclude Process -Directory).name
+	Copy-Item $LocalDest\$PackageFolder $Repo -Recurse -Exclude Process
+	If (Test-Path -Path $Repo\$PackageFolder) {
+		Write-Verbose "Package copied to Repository Successfully"
+		} Else { Copy-Item $LocalDest\$PackageFolder $Repo -Recurse -Exclude Process }
+	If (!(Test-Path -Path $Repo\$PackageFolder)) {
+		Write-Verbose "WARNING: UNABLE TO COPY PACKAGE TO REPOSITORY!"
+		pause
+		exit }
 
 #Reset VM to SnapShot
 	Write-Verbose "Resetting VM to SnapShot"
