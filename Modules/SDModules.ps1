@@ -1,4 +1,4 @@
-    Function Get-MSIInformation {
+       Function Get-MSIInformation {
         Param ([Parameter(Mandatory = $true)] [Alias('P')] [String] $Path)
         $FileResult = Get-Item -Path $Path -ErrorAction SilentlyContinue
         If (($FileResult | Select -ExpandProperty Extension) -ne '.msi') {
@@ -68,3 +68,31 @@
             throw "Failed to get MSI file version the error was: {0}." -f $_
         }
     }
+	Function Stop-Processes {
+    param(
+        [parameter(Mandatory=$true)] $processName,
+                                     $timeout = 5
+    )
+    $processList = Get-Process $processName -ErrorAction SilentlyContinue
+    if ($processList) {
+        # Try gracefully first
+        $processList.CloseMainWindow() | Out-Null
+
+        # Wait until all processes have terminated or until timeout
+        for ($i = 0 ; $i -le $timeout; $i ++){
+            $AllHaveExited = $True
+            $processList | % {
+                $process = $_
+                If (!$process.HasExited){
+                    $AllHaveExited = $False
+                }                    
+            }
+            If ($AllHaveExited){
+                Return
+            }
+            sleep 1
+        }
+        # Else: kill
+        $processList | Stop-Process -Force        
+    }
+}
