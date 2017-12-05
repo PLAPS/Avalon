@@ -1,4 +1,12 @@
-$AppName = 'AppName' #The application name, as appears on Start Menu
+#Logging Setup
+  $VerbosePreference = "Continue"
+  $AppName = 'AppName' #The application name, as appears on Start Menu
+  $ErrorActionPreference="SilentlyContinue"
+	Stop-Transcript | out-null
+	$ErrorActionPreference = "Continue"
+	New-Item -ItemType directory -path "C:\Avalon\logging" -Force
+	$DStamp = Get-Date -Format dMMMy_ms
+	Start-Transcript -path "C:\Avalon\logging\${AppName}_Process_${DStamp}.txt"
 
 $LocalDest = 'C:\Avalon'
 $ProcessFolder = "$LocalDest\Process"
@@ -38,3 +46,5 @@ Start-Sleep -Seconds 45
 #Remove-Item 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Avaya\CMS Supervisor R18\CMS Supervisor R18 Help -- English.lnk' -Force
 #Remove-Item 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Avaya\CMS Supervisor R18\Readme.txt.lnk' -Force
 #----------------
+
+Stop-Transcript
