@@ -1,5 +1,13 @@
-#region Installation
+$VerbosePreference = "Continue"
 $AppName = 'AppVManage'
+$ErrorActionPreference="SilentlyContinue"
+Stop-Transcript | out-null
+$ErrorActionPreference = "Continue"
+New-Item -ItemType directory -path "C:\Avalon\logging" -Force
+$DStamp = Get-Date -Format dMMMy_ms
+Start-Transcript -path "C:\Avalon\logging\${AppName}_Process_${DStamp}.txt"
+
+#region Installation
 $InstallFile = 'Setup_AppVManage.msi'
 $LocalDest  = 'C:\Avalon'
 $ProcessFolder = "$LocalDest\Process"
@@ -21,3 +29,5 @@ Start-Sleep -Seconds 10
 Rename-Item 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AppV_Manage\AppV_Manage.lnk' "AppV_Manage v$Version.lnk"
 
 #endregion
+
+Stop-Transcript
