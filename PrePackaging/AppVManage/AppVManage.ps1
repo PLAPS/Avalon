@@ -1,3 +1,11 @@
+#Logging Setup
+$ErrorActionPreference="SilentlyContinue"
+Stop-Transcript | out-null
+$ErrorActionPreference = "Continue"
+$AppSourceName = Split-Path -Path $PSScriptRoot -Leaf
+$DStamp = Get-Date -Format dMMMy_ms
+Start-Transcript -path "$PSScriptRoot\..\..\logging\${AppSourceName}_Avalon_${Dstamp}.txt"
+
 #vSphere and Sequencer VM Configuration
 	$Sequencer = 'ComputerName' #Computer name of Sequencer VM
 	Write-Verbose "Please Enter Credentials for VSphere (Domain\User)"
@@ -68,7 +76,11 @@
 		pause
 		exit }
 
+Copy-Item "$LocalDest\logging\*.txt" "$PSScriptRoot\..\..\logging\"
+
 #Reset VM to SnapShot
 	Write-Verbose "Resetting VM to SnapShot"
 	Get-Snapshot -VM $Sequencer -Name $SnapShotName | Set-VM -VM $Sequencer -Confirm:$false
 	Write-Verbose "Package Completed!"
+
+Stop-Transcript	
